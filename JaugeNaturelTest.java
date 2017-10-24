@@ -10,7 +10,7 @@ public class JaugeNaturelTest {
 
 	@Before
 	public void setUp() throws Exception {
-		jauge = new JaugeNaturel(100, 345,67899);
+		jauge = new JaugeNaturel(100, 345, 67899);
 	}
 
 	@After
@@ -30,7 +30,7 @@ public class JaugeNaturelTest {
 
 	@Test
 	public void testEstVert() {
-		assertTrue("ma jauge est Verte", jauge.estVert());
+		assertTrue("ma jauge est Vert", jauge.estVert());
 	}
 
 	@Test
@@ -48,58 +48,42 @@ public class JaugeNaturelTest {
 
 	@Test
 	public void testDecrementer() {
-		long val = jauge.getValeur(); 
+		long val = jauge.getValeur();
 		jauge.decrementer();
-		assertEquals("ma jauge est bien décrémentée! Youpii",val-1, jauge.getValeur());
+		assertEquals("ma jauge est bien décrémenté! Youpii",val-1, jauge.getValeur());
 	}
 
 	@Test
 	public void testToString() {
 		assertEquals("Affichage Parfait !! ", "<50 [8,50]>", jauge.toString());
 	}
-
+	
 	@Test
-	public void testDansIntervalle() {
-<<<<<<< HEAD
-		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
-		
-	}
-	public void testDeplacement() {
-		jauge= new JaugeNaturel(100, 345,102);
-		while(!jauge.estBleu()) {
-			jauge.decrementer();
-		}
-		assertTrue(jauge.estBleu() && !jauge.estVert() && !jauge.estRouge());
-		while(!jauge.estVert()) {
-			jauge.incrementer();
-		}
-		assertTrue(!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
-	}
-
-	public void testLimiteVigieMaxInferieurVigieMin() {
-		jauge= new JaugeNaturel(345, 100,150);
-		assertFalse("min > max",jauge.getMin>jauge.getMax);
+	public void testInferieurIntervalle(){
+	  for(int i = 0; i < 2; i++){
+	    if(i == 0){
+	      jauge = new JaugeNaturel(12,18,3);
+	    }else{
+	      jauge = new JaugeNaturel(12,18,12);
+	    }
+	    assertTrue(jauge.estBleu());
+	    assertFalse(jauge.estVert());
+	    assertFalse(jauge.estRouge());
+	  }
 	}
 	
-	public void testMaxEgaleMin() {
-		jauge= new JaugeNaturel(100, 100,100);
-		assertFalse("min = max", jauge.getMin==jauge.getMax);
-	}
-	
-=======
-		
-		
-		assertTrue("ma jauge est dans l'intervalle",!jauge.estBleu() && jauge.estVert() && !jauge.estRouge());
-		
-		
-	}
-
->>>>>>> branch 'master' of https://github.com/M4RCF0UQU3/JavaTest
-	public static void main(String[] args) {
-		 JaugeNaturelTest jauge = new JaugeNaturelTest();
-		 try {
-			 jauge.setUp();
-		 }catch(Exception e){}
-	}
+	@Test
+    public void testSuperieurIntervalle(){
+      for(int i = 0; i < 2; i++){
+        if(i == 0){
+          jauge = new JaugeNaturel(12,18,3);
+        }else{
+          jauge = new JaugeNaturel(12,18,12);
+        }
+        assertTrue(jauge.estBleu());
+        assertFalse(jauge.estVert());
+        assertFalse(jauge.estRouge());
+      }
+    }
 
 }
