@@ -57,6 +57,30 @@ public class JaugeNaturelTest {
 	public void testToString() {
 		assertEquals("Affichage Parfait !! ", "<50 [8,50]>", jauge.toString());
 	}
+	@Test
+	public void testDansIntervalle() {
+		assertTrue(!jauge.estBleu()&&jauge.estVert()&&!jauge.estRouge());
+	}
+	@Test
+	public void testDeplacement() {
+		jauge = new JaugeNaturel(100, 345, 102);
+		jauge.decrementer();jauge.decrementer();jauge.decrementer();
+		assertTrue(jauge.estBleu()&&!jauge.estVert()&&!jauge.estRouge());
+		jauge.incrementer();jauge.incrementer();jauge.incrementer();jauge.incrementer();
+		assertTrue(!jauge.estBleu()&&jauge.estVert()&&!jauge.estRouge())
+	}
+	@Test
+	public void testDeplacement() {
+		jauge = new JaugeNaturel(100, 98, 99);
+		assertFalse("jauge incoherente",jauge.getMax()<jauge.getDepart()<jauge.getMin())
+	}
+	@Test
+	public void testMaxEgalMin() {
+		jauge = new JaugeNaturel(100, 100, 100);
+		assertFalse("jauge inutile, vitesse fixer à un seul rang donc improbable",jauge.getMax()==<jauge.getMin())
+	}
+	
+	
 	
 	@Test
 	public void testInferieurIntervalle(){
