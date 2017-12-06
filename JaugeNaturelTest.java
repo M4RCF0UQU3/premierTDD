@@ -92,14 +92,17 @@ public class JaugeNaturelTest {
 	 */
 	@Test//(expected=IllegalArgumentException.class)
 	public void testCreationNonValide(){
+		JaugeNaturel inverse,egale;
 		try{
-			JaugeNaturel inverse = new JaugeNaturel(78, 13, 0);
+			inverse = new JaugeNaturel(78, 13, 0);
 			fail("Exception not thrown on inverse");
 		}catch(IllegalArgumentException e1){
 			try{
-				JaugeNaturel egale = new JaugeNaturel(-45, -45, -45);
+				egale = new JaugeNaturel(-45, -45, -45);
 				fail("Exception not thrown on egale");
 			}catch(IllegalArgumentException e2){
+				assert ("inverse: "+inverse) ;//!= null;
+				assert ("egale: "+egale) ;//!= null;
 			}
 		}
 	}
